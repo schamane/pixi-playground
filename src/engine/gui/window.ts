@@ -1,5 +1,6 @@
 import { Engine } from "../engine";
 import { GameObject } from "./../base";
+import { IPoint } from "./iPoint";
 import { IWindowOptions } from "./iWindowOptions";
 
 export class Window extends GameObject {
@@ -8,6 +9,7 @@ export class Window extends GameObject {
   private state: string = "close";
   private dragging: boolean;
   private draggingData: any;
+  private draggingOffset: IPoint;
 
   constructor(options: IWindowOptions) {
     super(options.x, options.y);
@@ -59,6 +61,7 @@ export class Window extends GameObject {
       return;
     }
 
+    this.draw();
     Engine.addGameObject(this);
     this.state = "open";
   }
@@ -68,12 +71,19 @@ export class Window extends GameObject {
       return;
     }
     Engine.removeGameObject(this);
+    this.Graphics.clear();
     this.state = "close";
   }
 
   protected onDragStart(event: any): void {
+    const  g = this.Graphics;
     this.draggingData = event.data;
-    this.Graphics.alpha = 0.5;
+    g.alpha = 0.5;
+    if(!this.dragging) {
+      this.draggingOffset = this.draggingData.getLocalPosition(
+        this.Graphics
+      );
+    }
     this.dragging = true;
   }
 
@@ -89,9 +99,8 @@ export class Window extends GameObject {
       const newPosition = this.draggingData.getLocalPosition(
         this.Graphics.parent
       );
-      this.Graphics.x = newPosition.x;
-      this.Graphics.y = newPosition.y;
-      console.log(newPosition);
+      this.Graphics.x = newPosition.x - this.draggingOffset.x;
+      this.Graphics.y = newPosition.y - this.draggingOffset.y;
     }
   }
 }
