@@ -13,7 +13,11 @@
   "repository": "https://github.com/schamane/electron-playground-ts",
   "author": "GitHub",
   "license": "MIT",
-  "keywords": ["Electron", "playground", "typescript"],
+  "keywords": [
+    "Electron",
+    "playground",
+    "typescript"
+  ],
   "devDependencies": {
     "@types/pixi.js": "^4.7.3",
     "@types/lodash": "^4.14.109",
