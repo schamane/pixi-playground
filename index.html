@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>TypeScript Playground</title>
+    <style>
+        body,
+        .content,
+        engine-view {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            overflow: hidden;
+        }
+
+        gui-view {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container content">
+        <engine-view></engine-view>
+        <gui-view></gui-view>
+    </div>
+</body>
+
+<script>
+    // You can also require other files to run in this process
+    require('./dist/renderer.js')
+</script>
+
+</html>
