@@ -31,14 +31,23 @@
 
 <body>
     <div class="container content">
+        <h1>Starting...</h1>
         <engine-view></engine-view>
         <gui-view></gui-view>
     </div>
 </body>
 
 <script>
+    // document.querySelector('head').innerHTML += "<style>@import url('https://fonts.googleapis.com/css?family=Press+Start+2P|Marck+Script|Open+Sans|Ubuntu|Play|Roboto|Oswald&amp;subset=cyrillic');</style>";
+    document.querySelector('head').innerHTML += "<style>@font-face { font-family: 'FreePixel'; src: url('assets/fonts/FreePixel.ttf')  format('truetype');}</style>";
+    document.querySelector('head').innerHTML += "<style>@font-face { font-family: 'WebFont'; src: url('assets/fonts/000webfont.ttf')  format('truetype');}</style>";
+    document.querySelector('head').innerHTML += "<style>@font-face { font-family: 'IBMPlexMono'; src: url('assets/fonts/IBM_Plex_Mono/IBMPlexMono-Regular.ttf')  format('truetype');}</style>";
+    document.querySelector('head').innerHTML += "<style>@font-face { font-family: 'IBMPlexSans'; src: url('assets/fonts/IBM_Plex_Sans/IBMPlexSans-Regular.ttf')  format('truetype');}</style>";
+    document.querySelector('head').innerHTML += "<style>@font-face { font-family: 'Oswald'; src: url('assets/fonts/Oswald/Oswald-Regular.ttf')  format('truetype');}</style>";
+    document.querySelector('head').innerHTML += "<style>@font-face { font-family: 'Oswald'; src: url('assets/fonts/Oswald/Oswald-Medium.ttf')  format('truetype');font-weight: bold;}</style>";
     // You can also require other files to run in this process
     require('./dist/renderer.js')
+
 </script>
 
 </html>

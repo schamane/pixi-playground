@@ -15,6 +15,8 @@ export class Pixi {
 
     el.appendChild(this.pixi.view);
     this.renderer = this.pixi.renderer;
+    // Better perf - https://github.com/pixijs/pixi.js/issues/4889
+    this.renderer.plugins.interaction.moveWhenInside = true;
     this.resize(this.renderer, window.innerWidth, window.innerHeight);
   }
 
@@ -22,7 +24,7 @@ export class Pixi {
     const resizefn = this.resize;
     const renderer = this.renderer;
 
-    if (!this.resizeTimeout) {
+    if (this.resizeTimeout) {
       clearTimeout(this.resizeTimeout);
     }
 
@@ -33,6 +35,14 @@ export class Pixi {
 
   public getStage(): PIXI.Container {
     return this.pixi.stage;
+  }
+
+  public getApplication(): PIXI.Application {
+    return this.pixi;
+  }
+
+  public getRenderer(): PIXI.CanvasRenderer | PIXI.WebGLRenderer {
+    return this.renderer;
   }
 
   /**

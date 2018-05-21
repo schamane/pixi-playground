@@ -25,11 +25,11 @@ export class Player extends Clickable {
   }
 
   public draw(): void {
-    const g = this.Graphics;
-    const x = this.x;
-    const y = this.y;
-    const w = this.x + this.width;
-    const h = this.y + this.height;
+    const g = this.Graphics as PIXI.Graphics;
+    const x = 0;
+    const y = 0;
+    const w = this.width;
+    const h = this.height;
 
     g.beginFill(0xff3300);
     g.lineStyle(this.line, 0xffd900, 1);

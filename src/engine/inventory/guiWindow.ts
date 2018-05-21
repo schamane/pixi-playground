@@ -1,4 +1,5 @@
-import { GameEventName, GameEvents, GameObject } from "./../base";
+import { Point } from "pixi.js";
+import { GameEventName, GameEvents, GameObject, Sprite } from "./../base";
 import { Window } from "./../gui";
 
 export class GuiWindow extends GameObject {
@@ -7,11 +8,11 @@ export class GuiWindow extends GameObject {
   constructor(x: number, y: number) {
     super(x, y);
     GuiWindow.window = new Window({
-      x: 100,
-      y: 100,
-      width: 200,
+      x: 220,
+      y: 110,
+      width: 440,
       height: 160,
-      title: "Hallo Window"
+      title: "Inventory"
     });
     this.startListening();
   }
@@ -21,20 +22,44 @@ export class GuiWindow extends GameObject {
   }
 
   public draw(): void {
-    // draw
-    // console.log(this);
+    this.Graphics.position = new Point(0, 0);
+    return;
   }
 
   protected open(): void {
-    this.draw();
     const win = GuiWindow.window;
     if (win.isOpen()) {
-      console.log("close win");
       win.close();
     } else {
-      console.log("open win");
       win.open();
     }
+    this.drawContent(win.getGraphics());
+  }
+
+  private drawContent(cont: PIXI.Container): void {
+    // this.draw();
+    this.Graphics.position = new Point(12, 48);
+
+    let o = new Sprite(
+      64 / 2,
+      64 / 2,
+      "assets/inv/1221_64.png",
+      "Креслення 12"
+    );
+    this.getGraphics().addChild(o.getGraphics());
+
+    o = new Sprite(64 / 2 + 66, 64 / 2, "assets/inv/533_64.png", "Батарейка I");
+    this.getGraphics().addChild(o.getGraphics());
+
+    o = new Sprite(
+      64 / 2 + 66 * 2,
+      64 / 2,
+      "assets/inv/13003_64.png",
+      "Батарейка II"
+    );
+    this.getGraphics().addChild(o.getGraphics());
+
+    cont.addChild(this.getGraphics());
   }
 
   private startListening(): void {

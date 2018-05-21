@@ -7,13 +7,13 @@ export abstract class Clickable extends GameObject implements IClickable {
 
     g.interactive = true;
     g.buttonMode = true;
-    g.hitArea = g.getBounds();
+    // g.hitArea = g.getBounds();
     g.on("pointerdown", this.onClick);
   }
 
   public updateInteractionArrea(): void {
     const g = this.Graphics;
-    g.hitArea = g.getBounds();
+    g.hitArea = g.getLocalBounds();
   }
 
   protected abstract onClick(): void;

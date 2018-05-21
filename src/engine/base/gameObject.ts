@@ -1,15 +1,16 @@
 export abstract class GameObject {
-  protected Graphics: PIXI.Graphics;
-  protected x: number;
-  protected y: number;
+  protected Graphics: PIXI.Container;
 
-  constructor(x: number, y: number) {
-    this.x = x;
-    this.y = y;
-    this.Graphics = new PIXI.Graphics();
+  constructor(x: number, y: number, init: boolean = true) {
+    if(init) {
+      const g = new PIXI.Graphics();
+      g.x = x;
+      g.y = y;
+      this.Graphics = g;    
+    }
   }
 
-  public getGraphics(): PIXI.Graphics {
+  public getGraphics(): PIXI.Container {
     return this.Graphics;
   }
 
