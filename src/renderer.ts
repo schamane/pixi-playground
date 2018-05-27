@@ -1,7 +1,9 @@
 // import * as PIXI from "pixi.js";
 import * as FontFaceObserver from "fontfaceobserver";
+import * as sourceMapSupport from "source-map-support";
 import { Engine } from "./engine/index";
 
+sourceMapSupport.install();
 // TODO implement fail if webGL not supported
 /*
 let type = "WebGL";

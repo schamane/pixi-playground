@@ -13,16 +13,14 @@
   "repository": "https://github.com/schamane/electron-playground-ts",
   "author": "GitHub",
   "license": "MIT",
-  "keywords": [
-    "Electron",
-    "playground",
-    "typescript"
-  ],
+  "keywords": ["Electron", "playground", "typescript"],
   "devDependencies": {
-    "@types/pixi.js": "^4.7.3",
     "@types/lodash": "^4.14.109",
+    "@types/pixi.js": "^4.7.3",
+    "@types/source-map-support": "^0.4.0",
     "electron": "^2.0.1",
     "electron-reload": "^1.2.2",
+    "source-map-support": "^0.5.6",
     "tslint": "^5.10.0",
     "tslint-config-prettier": "^1.12.0",
     "typescript": "^2.8.3"
@@ -31,6 +29,7 @@
     "fontfaceobserver": "^2.0.13",
     "lodash": "^4.17.10",
     "pixi-filters": "^2.6.1",
-    "pixi.js": "^4.7.3"
+    "pixi.js": "^4.7.3",
+    "source-map-support": "^0.5.6"
   }
 }
