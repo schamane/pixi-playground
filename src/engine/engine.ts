@@ -1,5 +1,11 @@
 import { head } from "lodash";
-import { GameEventName, GameEvents, GameObject, Sprite } from "./base";
+import {
+  GameEventName,
+  GameEvents,
+  GameObject,
+  Resources,
+  Sprite
+} from "./base";
 import { Tooltip } from "./gui/tooltyp";
 import { GuiWindow as Inventory } from "./inventory";
 import { Player } from "./object";
@@ -10,6 +16,7 @@ export class Engine {
   public static PIXI: PIXI.Application;
   public static Renderer: PIXI.CanvasRenderer | PIXI.WebGLRenderer;
   public static Tooltyp: Tooltip;
+  public static Resources: Resources;
 
   public static addGameObject(obj: GameObject): void {
     Engine.Stage.addChild(obj.getGraphics());
@@ -76,41 +83,11 @@ export class Engine {
   }
 
   private initInventory(): void {
-    this.inventory = new Inventory(100, 100);
+    Engine.Resources = Resources.getInstance();
+    this.inventory = new Inventory(100, 100, this.player.inventory);
   }
 
   private initSprite(): void {
-    let o = new Sprite(
-      40 + 32 / 2,
-      10 + 32 / 2,
-      "assets/inv/14264_32.png",
-      "Webstasis"
-    );
-    this.gameObjects.push(o);
-    Engine.addGameObject(o);
-    o = new Sprite(
-      40 + 32 / 2 + 32 * 1,
-      10 + 32 / 2,
-      "assets/inv/10156_32.png"
-    );
-    this.gameObjects.push(o);
-    Engine.addGameObject(o);
-    o = new Sprite(
-      40 + 32 / 2 + 32 * 2,
-      10 + 32 / 2,
-      "assets/inv/14160_32.png",
-      "Capacitor"
-    );
-    this.gameObjects.push(o);
-    Engine.addGameObject(o);
-
-    o = new Sprite(
-      40 + 32 / 2 + 32 * 3,
-      10 + 32 / 2,
-      "assets/inv/1221_32.png",
-      "Креслення"
-    );
-    this.gameObjects.push(o);
-    Engine.addGameObject(o);
+    // todo
   }
 }

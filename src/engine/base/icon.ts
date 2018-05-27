@@ -3,7 +3,7 @@ import * as PIXI from "pixi.js";
 import { Engine } from "..";
 import { GameObject } from "./gameObject";
 
-export class Sprite extends GameObject {
+export class Icon extends PIXI.Sprite {
   private static normalFilters = [new Filters.OutlineFilter(0.5)]; // [new Filters.ReflectionFilter()];
   private static hoverFilters = [
     new Filters.OutlineFilter(0.5),
@@ -11,47 +11,36 @@ export class Sprite extends GameObject {
   ];
 
   private tooltip: PIXI.Container;
-  private name: string;
+  // private name: string;
 
   constructor(x: number, y: number, image: string, name?: string) {
-    super(x, y, false);
-    const g = PIXI.Sprite.fromImage(image);
-
+    super(PIXI.Texture.fromImage(image));
     this.name = name;
 
     // g.anchor.set(0.5);
-    // g.x = 0;
-    // g.y = y;
-    g.filters = Sprite.normalFilters;
+    this.filters = Icon.normalFilters;
 
-    g.interactive = true;
-    g
-      .on("pointerover", this.filterOn.bind(this))
-      .on("pointerout", this.filterOff.bind(this));
+    this.interactive = true;
+    this.on("pointerover", this.filterOn.bind(this)).on(
+      "pointerout",
+      this.filterOff.bind(this)
+    );
 
     if (this.name) {
       // this.addTooltip();
-      g
-        .on("pointerover", this.showTooltip.bind(this))
-        .on("pointerout", Engine.hideTooltyp);
+      this.on("pointerover", this.showTooltip.bind(this)).on(
+        "pointerout",
+        Engine.hideTooltyp
+      );
     }
-    this.Graphics = g;
-  }
-
-  public draw(): void {
-    // nothing to do
-  }
-
-  public update(delta: number): void {
-    // nothing to do
   }
 
   private filterOn(): void {
-    this.Graphics.filters = Sprite.hoverFilters;
+    this.filters = Icon.hoverFilters;
   }
 
   private filterOff(): void {
-    this.Graphics.filters = Sprite.normalFilters;
+    this.filters = Icon.normalFilters;
   }
 
   /*

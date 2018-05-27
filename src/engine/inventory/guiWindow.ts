@@ -1,12 +1,18 @@
+import * as _ from "lodash";
 import { Point } from "pixi.js";
+import { Item } from ".";
+import { Inventory } from "../object";
 import { GameEventName, GameEvents, GameObject, Sprite } from "./../base";
 import { Window } from "./../gui";
 
 export class GuiWindow extends GameObject {
   private static window: Window;
+  private model: Inventory;
+  private content: Item[] = [];
 
-  constructor(x: number, y: number) {
+  constructor(x: number, y: number, model: Inventory) {
     super(x, y);
+    this.model = model;
     GuiWindow.window = new Window({
       x: 220,
       y: 110,
@@ -23,7 +29,6 @@ export class GuiWindow extends GameObject {
 
   public draw(): void {
     this.Graphics.position = new Point(0, 0);
-    return;
   }
 
   protected open(): void {
@@ -40,6 +45,15 @@ export class GuiWindow extends GameObject {
     // this.draw();
     this.Graphics.position = new Point(12, 48);
 
+    let i = 0;
+    _.each(this.model.items, item => {
+      const x = 66 * i++;
+      const y = 0;
+      const invItem = new Item(item, x, y);
+      this.getGraphics().addChild(invItem);
+      this.content.push(invItem);
+    });
+    /*
     let o = new Sprite(
       64 / 2,
       64 / 2,
@@ -58,6 +72,7 @@ export class GuiWindow extends GameObject {
       "Батарейка II"
     );
     this.getGraphics().addChild(o.getGraphics());
+    */
 
     cont.addChild(this.getGraphics());
   }
