@@ -8,7 +8,8 @@
     "build": "tsc",
     "watch": "tsc -w",
     "lint": "tslint -c tslint.json -p tsconfig.json",
-    "start": "npm run build && electron ./dist/main.js"
+    "start": "npm run build && electron ./dist/main.js",
+    "update:deps": "ncu -u"
   },
   "repository": "https://github.com/schamane/electron-playground-ts",
   "author": "GitHub",
@@ -19,21 +20,23 @@
     "typescript"
   ],
   "devDependencies": {
-    "@types/lodash": "^4.14.109",
-    "@types/pixi.js": "^4.7.3",
-    "@types/source-map-support": "^0.4.0",
-    "electron": "^2.0.1",
-    "electron-reload": "^1.2.2",
-    "tslint": "^5.10.0",
-    "tslint-config-prettier": "^1.12.0",
-    "typescript": "^2.8.3"
+    "@types/lodash": "^4.14.123",
+    "@types/pixi.js": "^4.8.7",
+    "@types/source-map-support": "^0.5.0",
+    "electron": "^4.1.4",
+    "electron-reload": "^1.4.0",
+    "ncu": "^0.2.1",
+    "npm-check-updates": "^3.1.8",
+    "tslint": "^5.16.0",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.4.3"
   },
   "dependencies": {
-    "fontfaceobserver": "^2.0.13",
-    "lodash": "^4.17.10",
+    "fontfaceobserver": "^2.1.0",
+    "lodash": "^4.17.11",
     "number-suffix": "^1.0.1",
-    "pixi-filters": "^2.6.1",
-    "pixi.js": "^4.7.3",
-    "source-map-support": "^0.5.6"
+    "pixi-filters": "^2.7.1",
+    "pixi.js": "^4.8.7",
+    "source-map-support": "^0.5.12"
   }
 }
