@@ -37,7 +37,7 @@ export class Tooltip extends PIXI.Container {
   }
 
   private static createBox(text: PIXI.Text): PIXI.Graphics {
-    const box = Tooltip.drawBox(text.getLocalBounds());
+    const box = Tooltip.drawBox(text.getLocalBounds({x:0, y:0} as PIXI.Rectangle));
     box.position = Tooltip.defaults.offset;
     return box;
   }

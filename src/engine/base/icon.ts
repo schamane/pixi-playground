@@ -14,7 +14,7 @@ export class Icon extends PIXI.Sprite {
   // private name: string;
 
   constructor(x: number, y: number, image: string, name?: string) {
-    super(PIXI.Texture.fromImage(image));
+    super(PIXI.Texture.from(image));
     this.name = name;
 
     // g.anchor.set(0.5);

@@ -13,7 +13,8 @@ function createWindow() {
     height: 600,
     webPreferences: {
       experimentalFeatures: true,
-      webgl: true
+      webgl: true,
+      nodeIntegration: true
     },
     width: 800
   });

@@ -1,4 +1,5 @@
 import * as Filters from "pixi-filters";
+import { Graphics, Filter, Text, TextStyle } from 'pixi.js';
 import { Engine } from "../engine";
 import { GameObject } from "./../base";
 import { IPoint } from "./iPoint";
@@ -7,7 +8,9 @@ import { IWindowOptions } from "./iWindowOptions";
 export class Window extends GameObject {
   public static lineStroke: number = 0.5;
 
-  private static normalFilters: Array<PIXI.Filter<any>> = [];
+  public Graphics: Graphics;
+
+  private static normalFilters: Filter[] = [];
   private static hoverFilters = [
     new Filters.OutlineFilter(0.5),
     new Filters.DropShadowFilter()
@@ -47,7 +50,7 @@ export class Window extends GameObject {
   }
 
   public draw(): void {
-    const g = this.Graphics as PIXI.Graphics;
+    const g = this.Graphics;
     const o = this.options;
     const x = 0;
     const y = 0;
@@ -64,7 +67,7 @@ export class Window extends GameObject {
     g.drawRect(x, y, w, h);
 
     // draw content area
-    const ca = new PIXI.Graphics();
+    const ca = new Graphics();
 
     ca.x = 10;
     ca.y = 44;
@@ -73,11 +76,11 @@ export class Window extends GameObject {
     g.addChild(ca);
 
     if (this.options.title) {
-      const style1 = new PIXI.TextStyle({
+      const style1 = new TextStyle({
         fontFamily: "Oswald",
         fontSize: 18
       });
-      const t = new PIXI.Text(this.options.title, style1);
+      const t = new Text(this.options.title, style1);
       g.addChild(t);
     }
   }
@@ -101,7 +104,7 @@ export class Window extends GameObject {
       return;
     }
     Engine.removeGameObject(this);
-    (this.Graphics as PIXI.Graphics).clear();
+    this.Graphics.clear();
     this.state = "close";
   }
 

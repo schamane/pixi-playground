@@ -1,4 +1,4 @@
-import { Container, Graphics } from "pixi.js";
+import { Container, Graphics, Point } from "pixi.js";
 import { CountLabel } from ".";
 import { Engine } from "..";
 import { GameObject, Icon, IResourceData } from "../base";
@@ -50,7 +50,7 @@ export class Item extends Container {
 
   private createCount(): CountLabel {
     const t = new CountLabel(this);
-    t.position = new PIXI.Point(10, 52);
+    t.position = new Point(10, 52);
     this.addChild(t);
     return t;
   }

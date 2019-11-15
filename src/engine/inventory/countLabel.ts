@@ -1,9 +1,9 @@
 import * as NumberSuffix from "number-suffix";
-import { Container } from "pixi.js";
+import { Container, Graphics, Rectangle, Text, TextStyle } from "pixi.js";
 import { IItemSize, Item } from ".";
 
-export class CountLabel extends PIXI.Container {
-  private static TextStyle = new PIXI.TextStyle({
+export class CountLabel extends Container {
+  private static TextStyle = new TextStyle({
     fontFamily: "FreePixel", // "IBMPlexMono", // "FreePixel"
     fontSize: 10,
     fill: 0xffffff,
@@ -21,7 +21,7 @@ export class CountLabel extends PIXI.Container {
   }
 
   private createBackground(): void {
-    const g = new PIXI.Graphics();
+    const g = new Graphics();
     g.beginFill(0);
     // g.lineStyle(0.5, 0xffffff, 1);
 
@@ -33,8 +33,8 @@ export class CountLabel extends PIXI.Container {
 
   private createLabel() {
     const count = this.countParent.getCount();
-    const t = new PIXI.Text(this.formater(count), CountLabel.TextStyle);
-    const b = t.getLocalBounds();
+    const t = new Text(this.formater(count), CountLabel.TextStyle);
+    const b = t.getLocalBounds({x:0 , y: 0} as Rectangle);
     t.x = IItemSize.BIG - 12 - b.width;
     this.addChild(t);
   }

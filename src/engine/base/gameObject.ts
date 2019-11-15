@@ -1,16 +1,18 @@
+import {Container, Graphics} from 'pixi.js';
+
 export abstract class GameObject {
-  protected Graphics: PIXI.Container;
+  protected Graphics: Container;
 
   constructor(x: number, y: number, init: boolean = true) {
     if(init) {
-      const g = new PIXI.Graphics();
+      const g = new Graphics();
       g.x = x;
       g.y = y;
       this.Graphics = g;    
     }
   }
 
-  public getGraphics(): PIXI.Container {
+  public getGraphics(): Container {
     return this.Graphics;
   }
 

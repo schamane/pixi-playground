@@ -6,15 +6,16 @@ import {
   Resources,
   Sprite
 } from "./base";
+import { Container, Application, Renderer, Point} from 'pixi.js';
 import { Tooltip } from "./gui/tooltyp";
 import { GuiWindow as Inventory } from "./inventory";
 import { Player } from "./object";
 import { Pixi } from "./pixi";
 
 export class Engine {
-  public static Stage: PIXI.Container;
-  public static PIXI: PIXI.Application;
-  public static Renderer: PIXI.CanvasRenderer | PIXI.WebGLRenderer;
+  public static Stage: Container;
+  public static PIXI: Application;
+  public static Renderer: Renderer;
   public static Tooltyp: Tooltip;
   public static Resources: Resources;
 
@@ -51,7 +52,7 @@ export class Engine {
     Engine.Tooltyp = new Tooltip();
 
     const t = new Tooltip();
-    t.position = new PIXI.Point(50, 50);
+    t.position = new Point(50, 50);
     t.show("Nazar");
 
     this.initPlayer();

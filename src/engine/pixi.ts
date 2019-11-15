@@ -4,10 +4,10 @@ import { GameObject } from "./base";
 export class Pixi {
   private pixi: PIXI.Application;
   private resizeTimeout: NodeJS.Timer;
-  private renderer: PIXI.CanvasRenderer | PIXI.WebGLRenderer;
+  private renderer: PIXI.Renderer; // PIXI.CanvasRenderer | PIXI.WebGLRenderer;
 
   constructor(el: Element) {
-    this.pixi = new PIXI.Application(el.clientWidth, el.clientHeight, {
+    this.pixi = new PIXI.Application({width: el.clientWidth, height: el.clientHeight,
       antialias: true,
       backgroundColor: 0x1099bb,
       preserveDrawingBuffer: true
@@ -41,7 +41,7 @@ export class Pixi {
     return this.pixi;
   }
 
-  public getRenderer(): PIXI.CanvasRenderer | PIXI.WebGLRenderer {
+  public getRenderer(): PIXI.Renderer {
     return this.renderer;
   }
 
@@ -53,7 +53,7 @@ export class Pixi {
   }
 
   private resize(
-    renderer: PIXI.CanvasRenderer | PIXI.WebGLRenderer,
+    renderer: PIXI.Renderer,
     widht: number,
     height: number
   ): void {

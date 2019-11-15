@@ -15,7 +15,7 @@ export class Sprite extends GameObject {
 
   constructor(x: number, y: number, image: string, name?: string) {
     super(x, y, false);
-    const g = PIXI.Sprite.fromImage(image);
+    const g = PIXI.Sprite.from(image);
 
     this.name = name;
 
