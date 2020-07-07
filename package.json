@@ -23,7 +23,7 @@
     "@types/lodash": "^4.14.147",
     "@types/pixi.js": "^5.0.0",
     "@types/source-map-support": "^0.5.0",
-    "electron": "^7.1.1",
+    "electron": "^7.2.4",
     "electron-reload": "^1.5.0",
     "ncu": "^0.2.1",
     "npm-check-updates": "^3.2.1",
