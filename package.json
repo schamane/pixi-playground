@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "fontfaceobserver": "^2.1.0",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "number-suffix": "^1.0.1",
     "pixi-filters": "^3.0.3",
     "pixi.js": "^5.2.0",
